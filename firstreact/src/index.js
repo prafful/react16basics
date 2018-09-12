@@ -6,6 +6,7 @@ import Name from './components/Name';
 import Comment from "./commentComponent/Comment";
 import LifeCycleComponent from './lifecycleComponent/LifeCycleComponent';
 import FormComponent from './formComponent/formComponent';
+import ControlledForm from './formComponent/controlledForm';
 
 
 var position = document.getElementById("rootcomponent")
@@ -41,4 +42,6 @@ ReactDOM.render(<div>
                     <LifeCycleComponent></LifeCycleComponent>
                     <p></p>
                     <FormComponent></FormComponent>
+                    <p></p>
+                    <ControlledForm></ControlledForm>
                 </div>, position3)                

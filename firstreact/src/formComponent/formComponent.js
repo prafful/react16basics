@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 class FormComponent extends React.Component {
 
     constructor(){
@@ -7,11 +9,14 @@ class FormComponent extends React.Component {
         this.playWithSubmit = this.playWithSubmit.bind(this)
     }
 
+
     playWithSubmit(e){
         e.preventDefault()
         console.log(e);
         console.log(this.input.value);
     }
+
+   
     
     render() { 
         return ( <div>
@@ -19,6 +24,8 @@ class FormComponent extends React.Component {
                 Name: <input type="text" ref={(meme)=> this.input = meme  }/>
                       <input type="submit" />
             </form>
+
+            
         </div> )
     }
 }
