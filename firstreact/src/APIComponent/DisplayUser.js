@@ -3,9 +3,13 @@ import React from 'react';
 class DisplayUser extends React.Component {
     
     render() { 
-        return ( <div>
-            {this.props.id}, {this.props.name}, {this.props.email}
-        </div> );
+        return ( 
+                    <tr>
+                        <td>{this.props.id}</td> 
+                        <td>{this.props.name}</td> 
+                        <td>{this.props.email}</td>
+                    </tr> 
+                 );
     }
 }
  

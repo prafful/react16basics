@@ -44,7 +44,18 @@ class RemoteData extends React.Component {
         return ( <div>
                     Call the child component 
                     to dispaly JSON data.
-                    {this.displayData()}
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>S.no</th>
+                                <th>Name</th>
+                                <th>email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.displayData()}
+                        </tbody>    
+                    </table>
                     </div> );
     }
 }
