@@ -7,6 +7,7 @@ import Comment from "./commentComponent/Comment";
 import LifeCycleComponent from './lifecycleComponent/LifeCycleComponent';
 import FormComponent from './formComponent/formComponent';
 import ControlledForm from './formComponent/controlledForm';
+import RemoteData from './APIComponent/RemoteData';
 
 
 var position = document.getElementById("rootcomponent")
@@ -44,4 +45,6 @@ ReactDOM.render(<div>
                     <FormComponent></FormComponent>
                     <p></p>
                     <ControlledForm></ControlledForm>
+                    <p></p>
+                    <RemoteData />
                 </div>, position3)                
