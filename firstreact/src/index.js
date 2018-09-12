@@ -4,11 +4,15 @@ import FirstFriend from './FirstComponent';
 
 import Name from './components/Name';
 import Comment from "./commentComponent/Comment";
+import LifeCycleComponent from './lifecycleComponent/LifeCycleComponent';
+import FormComponent from './formComponent/formComponent';
 
 
 var position = document.getElementById("rootcomponent")
 
 var position2 = document.getElementById("container2")
+
+var position3 = document.getElementById("lifecycle")
 
 ReactDOM.render(
         <div>
@@ -32,3 +36,9 @@ ReactDOM.render(
                 <Comment name="Luka">Tired!!!</Comment>
                 </div>
                 , position2)        
+
+ReactDOM.render(<div>
+                    <LifeCycleComponent></LifeCycleComponent>
+                    <p></p>
+                    <FormComponent></FormComponent>
+                </div>, position3)                
