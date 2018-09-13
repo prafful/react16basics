@@ -1,17 +1,30 @@
 import React from 'react';
 import Product from './Product';
+import axios from 'axios'
 
-import feedback from '../data'
+//import feedback from '../data'
 
 class ProductList extends React.Component {
 
     constructor(){
         super()
         this.state ={
-            products:feedback
+            products:[]
         }
 
         this.voteClicked = this.voteClicked.bind(this)
+    }
+
+    componentWillMount(){
+        this.getApiData()
+    }
+
+    getApiData(){
+        axios.get("http://localhost:4444/feedback")
+            .then((response)=>{
+                //console.log(response.data);
+                this.setState({products: response.data})
+            })
     }
 
     voteClicked(id, check){
@@ -28,7 +41,7 @@ class ProductList extends React.Component {
             }
         })
         this.setState({products: updatedProducts})
-        console.log(this.state.products);
+        //console.log(this.state.products);
     }
     
     render() { 
