@@ -7,27 +7,34 @@ class ProductList extends React.Component {
     
     render() { 
 
-        const product = feedback[0]
+        const product = feedback
         console.log(product)
 
+        const sortedProduct = product.sort((a,b)=>(
+             a.vote-b.vote
+        ))
+        
+        const allproducts = sortedProduct.map((p)=>{
+            return(
+            <Product
+                    key={p.id}
+                    id={p.id}
+                    title={p.title}
+                    description={p.description}
+                    url={p.url}
+                    productImage={p.imageUrl}
+                    avatarUrl={p.avatarUrl}
+                    vote={p.vote}
+            ></Product>
+            )
+        })
+
         return ( 
-            <div className="ui unstackable items">
-                <Product 
-                    id={product.id}
-                    title={product.title}
-                    description={product.description}
-                    url={product.url}
-                    productImage={product.imageUrl}
-                    avatarUrl={product.avatarUrl}
-                />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-            </div>
+                
+                        <div className="ui unstackable items">
+                            {allproducts}
+                        </div>
+                 
          );
     }
 }
