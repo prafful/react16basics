@@ -3,25 +3,20 @@ import '../../node_modules/semantic-ui/dist/semantic.css'
 
 
 class Product extends React.Component {
-
-    constructor(props){
-        super(props)
-        this.state = {
-            vote: this.props.vote
-        }
+    constructor(){
+        super()
         this.upVote = this.upVote.bind(this)
         this.downVote = this.downVote.bind(this)
-
     }
-    
+
     upVote(){
         console.log("Upvote called");
-        this.setState({vote: this.state.vote + 1})
+        this.props.onCheck(this.props.id, 1)
     }
 
     downVote(){
         console.log("Downvote called");
-        this.setState({vote: this.state.vote - 1})
+        this.props.onCheck(this.props.id, 0)
     }
 
     render() {
@@ -35,7 +30,7 @@ class Product extends React.Component {
                     </div>
                     <div className="middle aligned content">
                         <div className="header">
-                        {this.state.vote}
+                        {this.props.vote}
                             <a onClick={this.upVote}>
                                 <i className="large caret up icon" />
                             </a>
