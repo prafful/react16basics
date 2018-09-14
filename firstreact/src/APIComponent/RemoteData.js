@@ -7,11 +7,20 @@ class RemoteData extends React.Component {
     constructor(){
         super()
         this.state ={
-            users:[]
+            users:[],
+            title:"",
+            description:"",
+            vote:0,
+            imageUrl:"",
+            avatarUrl:"",
+            url:""
         }
 
         this.callRemoteData = this.callRemoteData.bind(this)
         this.insertData = this.insertData.bind(this)
+        this.inputImage = this.inputImage.bind(this)
+        this.inputDescription = this.inputDescription.bind(this)
+        this.inputTitle = this.inputTitle.bind(this)
     }
     
     componentWillMount(){
@@ -43,14 +52,51 @@ class RemoteData extends React.Component {
     }
 
     insertData(){
-        axios.post("http://localhost:4444/feedback",{
-                                                    "title": "Weekend Celebration",
-                                                    "description": "Something new!!!",
-                                                    })
+        /* {
+            "id": 1,
+            "title": "Project Mr. Bean",
+            "description": "One of the richest comedian on the globe!!!",
+            "url": "http://www.google.com",
+            "imageUrl": "../images/1.jpg",
+            "avatarUrl": "../images/icon/1.jpg",
+            "vote": 56
+          } */
+
+        const insertRecord = {
+            "title":this.state.title,
+            "description":this.state.description,
+            "url":this.state.url,
+            "imageUrl":this.state.imageUrl,
+            "avatarUrl":this.state.avatarUrl,
+            "vote":this.state.vote
+        }
+        axios.put("http://localhost:4444/feedback", insertRecord)
                 .then((response)=>{
                     console.log(response.data)
                 })
     }
+
+    inputTitle(e){
+        this.setState({title:e.target.value})
+    }
+
+    inputDescription(e){
+        this.setState({description:e.target.value})
+    }
+
+    inputImage(e){
+        //this.setState({})
+        console.log(e.target.files[0].name)
+        //"imageUrl": "../images/4.gif",
+        const tempPath = "../images/icon/" + e.target.files[0].name
+        this.setState({
+                        imageUrl:tempPath,
+                        avatarUrl:tempPath,
+                        url:"http://www.google.com"
+                    })
+    }
+
+
 
     render() { 
         return ( <div>
@@ -71,6 +117,27 @@ class RemoteData extends React.Component {
                         </tbody>    
                     </table>
                     <p></p>
+
+                    <form>
+                        <label>Title: </label>
+                        <input type="text" 
+                               value={this.state.title}
+                               onChange={this.inputTitle}    
+                               />
+                         <br></br>      
+                        <label>Description: </label>
+                        <textarea 
+                               value={this.state.description}
+                               onChange={this.inputDescription}    
+                               />
+                         <br></br>             
+                        <label>Profile Pic: </label>
+                        <input type="file"  
+                               onChange={this.inputImage} 
+                               accept="image/png, image/jpeg" 
+                               
+                               />
+                    </form>
                     <button onClick={this.insertData}>Insert using POST</button>
 
                     </div> );
