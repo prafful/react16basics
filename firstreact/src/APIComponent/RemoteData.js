@@ -70,7 +70,7 @@ class RemoteData extends React.Component {
             "avatarUrl":this.state.avatarUrl,
             "vote":this.state.vote
         }
-        axios.put("http://localhost:4444/feedback", insertRecord)
+        axios.post("http://localhost:4444/feedback", insertRecord)
                 .then((response)=>{
                     console.log(response.data)
                 })
