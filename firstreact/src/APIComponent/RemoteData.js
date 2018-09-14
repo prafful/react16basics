@@ -51,7 +51,8 @@ class RemoteData extends React.Component {
         }))
     }
 
-    insertData(){
+    insertData(e){
+        e.preventDefault()
         /* {
             "id": 1,
             "title": "Project Mr. Bean",
@@ -70,7 +71,7 @@ class RemoteData extends React.Component {
             "avatarUrl":this.state.avatarUrl,
             "vote":this.state.vote
         }
-        axios.post("http://localhost:4444/feedback", insertRecord)
+        axios.post("http://localhost:4444/feedback/", insertRecord)
                 .then((response)=>{
                     console.log(response.data)
                 })
@@ -118,7 +119,7 @@ class RemoteData extends React.Component {
                     </table>
                     <p></p>
 
-                    <form>
+                    <form onSubmit={this.insertData}>
                         <label>Title: </label>
                         <input type="text" 
                                value={this.state.title}
@@ -135,10 +136,10 @@ class RemoteData extends React.Component {
                         <input type="file"  
                                onChange={this.inputImage} 
                                accept="image/png, image/jpeg" 
-                               
-                               />
+                            />  
+                               <input type="submit"  value="Insert Data" />
                     </form>
-                    <button onClick={this.insertData}>Insert using POST</button>
+                  
 
                     </div> );
     }
