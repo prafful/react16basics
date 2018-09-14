@@ -2,21 +2,21 @@ import React from 'react';
 import Product from './Product';
 import axios from 'axios'
 
-//import feedback from '../data'
+import feedback from '../data'
 
 class ProductList extends React.Component {
 
     constructor(){
         super()
         this.state ={
-            products:[]
+            products:feedback
         }
 
         this.voteClicked = this.voteClicked.bind(this)
     }
 
     componentWillMount(){
-        this.getApiData()
+        //this.getApiData()
     }
 
     getApiData(){

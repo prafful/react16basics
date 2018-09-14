@@ -1,0 +1,4 @@
+#Thu Sep 13 18:01:20 IST 2018
+base.0=C\:\\Users\\Pradhi\\Desktop\\Desktop1\\IIHT\\Angular 6 Aug 2018\\Examples\\React\\reactCordova\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+renamed.0=classes.dex
+file.0=C\:\\Users\\Pradhi\\Desktop\\Desktop1\\IIHT\\Angular 6 Aug 2018\\Examples\\React\\reactCordova\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

@@ -11,6 +11,7 @@ class RemoteData extends React.Component {
         }
 
         this.callRemoteData = this.callRemoteData.bind(this)
+        this.insertData = this.insertData.bind(this)
     }
     
     componentWillMount(){
@@ -18,7 +19,7 @@ class RemoteData extends React.Component {
     }
 
     callRemoteData(){
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        axios.get("http://localhost:4444/feedback")
                 .then((response)=>{
                     console.log(response.data)
                     this.setState({users:response.data})
@@ -32,12 +33,23 @@ class RemoteData extends React.Component {
                <DisplayUser
                     key={oneUser.id}
                     id={oneUser.id}
-                    name={oneUser.name}
-                    email={oneUser.email}
+                    title={oneUser.title}
+                    description={oneUser.description}
+                    imageUrl={oneUser.imageUrl}
+                    avatarUrl={oneUser.avatarUrl}
+                    vote={oneUser.vote}
                ></DisplayUser>)
         }))
+    }
 
-
+    insertData(){
+        axios.post("http://localhost:4444/feedback",{
+                                                    "title": "Weekend Celebration",
+                                                    "description": "Something new!!!",
+                                                    })
+                .then((response)=>{
+                    console.log(response.data)
+                })
     }
 
     render() { 
@@ -47,15 +59,20 @@ class RemoteData extends React.Component {
                     <table border="1">
                         <thead>
                             <tr>
-                                <th>S.no</th>
-                                <th>Name</th>
-                                <th>email</th>
+                                <th></th>
+                                <th>Id</th>
+                                <th>Votes</th>
+                                <th>Title</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             {this.displayData()}
                         </tbody>    
                     </table>
+                    <p></p>
+                    <button onClick={this.insertData}>Insert using POST</button>
+
                     </div> );
     }
 }
