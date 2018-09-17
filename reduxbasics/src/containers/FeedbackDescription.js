@@ -1,19 +1,34 @@
 import React from 'react';
+import {connect} from 'react-redux'
+
 
 class FeedbackDescription extends React.Component {
 
-    render() { 
-        return (  
+    render() {
+        if(this.props.selectedFBprops== null){
+            return(
+                <div>
+                    Click on any title!!!!
+                </div>
+            )
+        }
+
+        return ( 
             <div>
                 <ul>
-                    <li>Description 1</li>
-                    <li>Description 2</li>
-                    <li>Description 3</li>
-                    <li>Description 4</li>
+                    <li>Feedback Description will come here</li>
+                    <li>{this.props.selectedFBprops.description}</li>
+
                 </ul>
             </div>
         );
     }
 }
  
-export default FeedbackDescription;
+function connectStateToComponentAsProps(state){
+    return ({
+        selectedFBprops:state.oneFB
+    })
+}
+
+export default connect(connectStateToComponentAsProps)(FeedbackDescription)

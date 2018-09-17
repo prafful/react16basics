@@ -11,12 +11,16 @@ class FeedbackTitle extends React.Component {
         return this.props.propsFeedbackTitles.map((fb)=>{
             return (<li 
                         key={fb.id}
-                        onClick={()=>{console.log(this.props.selectFeedback(fb))}}
-                        >
+                        onClick={()=>{this.feedbackClicked(fb)}}
+                    >
                         {fb.title}
                     </li>)
         })
             
+    }
+
+    feedbackClicked(fb){
+        {this.props.selectFeedback(fb)}
     }
 
 
